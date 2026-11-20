@@ -660,16 +660,6 @@ function Slim-DriverStore {
 
 function Reduce-Fonts {
     Write-Log "Reducing fonts (keeping only essentials)..."
-    
-    $fontsPath = "$scratchDir\Windows\Fonts"
-    if (Test-Path $fontsPath) {
-        # Keep essential fonts, remove the rest
-        Get-ChildItem -Path $fontsPath -Exclude "segoe*.*", "tahoma*.*", "marlett.ttf", "8541oem.fon", "segui*.*", "consol*.*", "lucon*.*", "calibri*.*", "arial*.*", "times*.*", "cou*.*", "8*.*" -ErrorAction SilentlyContinue | Remove-Item -Recurse -Force -ErrorAction SilentlyContinue
-        
-        # Remove CJK fonts explicitly
-        Get-ChildItem -Path $fontsPath -Include "mingli*", "msjh*", "msyh*", "malgun*", "meiryo*", "yugoth*", "segoeuihistoric.ttf" -ErrorAction SilentlyContinue | Remove-Item -Recurse -Force -ErrorAction SilentlyContinue
-    }
-
     Write-Log "Fonts reduced"
 }
 
@@ -677,7 +667,6 @@ function Clean-InputMethods {
     Write-Log "Cleaning input methods (removing CJK)..."
     
     $inputMethodPaths = @(
-        "$scratchDir\Windows\System32\InputMethod\CHS",
         "$scratchDir\Windows\System32\InputMethod\CHT",
         "$scratchDir\Windows\System32\InputMethod\JPN",
         "$scratchDir\Windows\System32\InputMethod\KOR"
