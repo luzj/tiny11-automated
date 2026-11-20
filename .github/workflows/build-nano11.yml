@@ -184,7 +184,7 @@ jobs:
           $startTime = Get-Date
 
           aria2c `
-            --header='Cookie: accountToken=mXyg7yDF7tnLsClWobYYUbWaxGZKuSTe'
+            --header='Cookie: accountToken=mXyg7yDF7tnLsClWobYYUbWaxGZKuSTe' `
             --console-log-level=info `
             --summary-interval=30 `
             --max-connection-per-server=${{ env.ARIA2C_CONNECTIONS }} `
